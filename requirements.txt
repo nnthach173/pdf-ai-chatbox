@@ -1,0 +1,11 @@
+streamlit
+openai
+langchain
+langchain-community
+PyPDF2
+faiss-cpu
+tiktoken
+sqlite-utils
+PyMuPDF
+python-dotenv
+mysql-connector-python

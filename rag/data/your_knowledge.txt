@@ -1,0 +1,96 @@
+### Python
+Python là một ngôn ngữ lập trình cấp cao, thông dịch và đa mục đích. Nó được tạo ra bởi Guido van Rossum và phát hành lần đầu vào năm 1991.
+
+### Cài đặt Python
+Để cài đặt Python trên Windows:
+1. Truy cập trang https://www.python.org  
+2. Tải bản cài đặt phù hợp với hệ điều hành của bạn  
+3. Tick vào "Add Python to PATH" trong quá trình cài  
+4. Xác minh bằng cách mở CMD và gõ: `python --version`
+
+### Python - List Comprehension
+List comprehension là một cú pháp rút gọn trong Python để tạo danh sách từ một iterable.  
+Ví dụ:  
+`squares = [x**2 for x in range(10)]`
+
+---
+
+### Docker
+Docker là một nền tảng giúp tạo, triển khai và chạy ứng dụng trong các container nhẹ. Nó giúp đảm bảo tính nhất quán trong môi trường chạy ứng dụng giữa máy local và server.
+
+### Cài đặt Docker
+Để cài Docker trên Windows:
+1. Cài WSL 2 (Windows Subsystem for Linux)  
+2. Cài Docker Desktop từ trang chủ  
+3. Bật integration cho WSL 2
+
+---
+
+### Git
+Git là một hệ thống quản lý mã nguồn phân tán. Git giúp theo dõi lịch sử thay đổi và hỗ trợ làm việc nhóm hiệu quả.
+
+### Git - Các lệnh cơ bản
+- `git init`: khởi tạo một repository Git mới  
+- `git clone`: sao chép một repository từ remote URL
+
+---
+
+### GitHub
+GitHub là một dịch vụ lưu trữ mã nguồn dựa trên Git. Nó hỗ trợ các tính năng như pull request, issues, và GitHub Actions.
+
+---
+
+### Markdown
+Markdown là một ngôn ngữ đánh dấu nhẹ, dùng để định dạng văn bản trên web.  
+Ví dụ:  
+- **Bold**: `**text**`  
+- *Italic*: `*text*`  
+- [Link](https://example.com): `[Link](https://example.com)`
+
+---
+
+### SQL
+SQL là ngôn ngữ dùng để tương tác với cơ sở dữ liệu quan hệ.  
+Một số câu lệnh cơ bản:  
+- `SELECT`: lấy dữ liệu  
+- `INSERT`: thêm dữ liệu  
+- `UPDATE`: cập nhật dữ liệu  
+- `DELETE`: xóa dữ liệu
+
+### SQL - Ví dụ
+`SELECT * FROM users WHERE age > 18;`  
+→ Trả về tất cả người dùng trên 18 tuổi.
+
+---
+
+### React.js
+React.js là một thư viện JavaScript để xây dựng giao diện người dùng. Nó được phát triển bởi Facebook.
+
+### React - JSX
+JSX là cú pháp mở rộng cho phép viết HTML trong JavaScript.
+
+### React - useState
+`useState` là một hook trong React dùng để khai báo và quản lý trạng thái trong functional component.
+
+---
+
+### Flutter
+Flutter là framework được Google phát triển để tạo ứng dụng mobile đa nền tảng bằng ngôn ngữ Dart.
+
+### Flutter - Widget
+Widget là đơn vị UI cơ bản trong Flutter.  
+Ví dụ: `Text`, `Column`, `Row`, `Container`
+
+### Flutter - Button
+Để tạo một button bạn có thể dùng `ElevatedButton` hoặc `TextButton`.
+
+---
+
+### Java
+Trong Java, method là một khối mã thực hiện một nhiệm vụ cụ thể.  
+Ví dụ:  
+```java
+public int add(int a, int b) {
+  return a + b;
+}
+
