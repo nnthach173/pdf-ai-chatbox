@@ -2,22 +2,21 @@ from datetime import datetime
 import json
 from db.db_manager import get_connection
 
-DB_PATH = "db/chat_history.db"
-
 def init_conversation_db():
     conn = get_connection()
     cursor = conn.cursor()
     cursor.execute("""
         CREATE TABLE IF NOT EXISTS pdf_sessions (
             pdf_name VARCHAR(255) PRIMARY KEY,
-            timestamp DATETIME,
+            timestamp TIMESTAMP,
             base_prompt TEXT,
             resp_id VARCHAR(255),
-            history_json LONGTEXT,
+            history_json TEXT,
             token_count INT
         )
     """)
     conn.commit()
+    cursor.close()
     conn.close()
 
 def save_pdf_session(pdf_name, base_prompt, resp_id, history, token_count):
@@ -26,21 +25,22 @@ def save_pdf_session(pdf_name, base_prompt, resp_id, history, token_count):
     cursor.execute("""
         INSERT INTO pdf_sessions (pdf_name, timestamp, base_prompt, resp_id, history_json, token_count)
         VALUES (%s, %s, %s, %s, %s, %s)
-        ON DUPLICATE KEY UPDATE
-            timestamp = VALUES(timestamp),
-            base_prompt = VALUES(base_prompt),
-            resp_id = VALUES(resp_id),
-            history_json = VALUES(history_json),
-            token_count = VALUES(token_count)
+        ON CONFLICT (pdf_name) DO UPDATE SET
+            timestamp = EXCLUDED.timestamp,
+            base_prompt = EXCLUDED.base_prompt,
+            resp_id = EXCLUDED.resp_id,
+            history_json = EXCLUDED.history_json,
+            token_count = EXCLUDED.token_count
     """, (
         pdf_name,
-        datetime.now().strftime('%Y-%m-%d %H:%M:%S'),
+        datetime.now(),
         base_prompt,
         resp_id,
         json.dumps(history),
         token_count
     ))
     conn.commit()
+    cursor.close()
     conn.close()
 
 def load_all_pdf_sessions():
@@ -48,6 +48,7 @@ def load_all_pdf_sessions():
     cursor = conn.cursor()
     cursor.execute("SELECT pdf_name, base_prompt, resp_id, history_json, token_count FROM pdf_sessions")
     rows = cursor.fetchall()
+    cursor.close()
     conn.close()
     
     sessions = {}
@@ -65,4 +66,5 @@ def delete_all_sessions():
     cursor = conn.cursor()
     cursor.execute("DELETE FROM pdf_sessions")
     conn.commit()
+    cursor.close()
     conn.close()

@@ -97,9 +97,6 @@ def main():
 
                 context = get_context_from_pdf_query("summary", vector_folder)
 
-                with st.expander("🔍 RAG Retrieved Context"):
-                    st.markdown(context)
-
                 base_prompt = (
                     "You are a helpful assistant. When answering questions, always prioritize the provided context first. If the answer is not in the context, use your general knowledge to respond.\n\n"
                     "Context:\n"
